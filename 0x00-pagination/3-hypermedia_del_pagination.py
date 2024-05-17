@@ -50,12 +50,12 @@ class Server:
         else:
             assert index < dataset_length, "Index out of range"
 
-        next_index = index + page_size
+        next_index = min(index + page_size, dataset_length)
         data = dataset[index:next_index]
 
         return {
             "index": index,
-            "next_index": next_index,
+            "data": data,
             "page_size": page_size,
-            "data": data
+            "next_index": next_index
         }
