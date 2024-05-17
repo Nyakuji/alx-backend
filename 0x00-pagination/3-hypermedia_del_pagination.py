@@ -40,6 +40,27 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
+        """
+        Retrieves a subset of data from the dataset
+        based on the given index and page size.
+
+        Args:
+            index (int, optional): The starting index of
+            the subset. Defaults to None.
+            page_size (int, optional): The number of items to
+            include in the subset. Defaults to 10.
+
+        Returns:
+            dict: A dictionary containing the following information:
+                - index (int): The starting index of the subset.
+                - data (list): The subset of data.
+                - page_size (int): The number of items in the subset.
+                - next_index (int): The index of the next subset.
+
+        Raises:
+            AssertionError: If the index is negative or out of range.
+
+        """
         assert index is None or index >= 0, "Invalid index value"
 
         dataset = self.dataset()
